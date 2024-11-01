@@ -152,6 +152,11 @@ public class Menu extends javax.swing.JFrame {
         } catch (NumberFormatException nfe) {
             return false;
         }
+        
+        if (Integer.parseInt(strNum) < 0) {
+            return false;
+        }
+        
         return true;
     }
 
