@@ -36,10 +36,10 @@ public class Producto {
 
     public String[] getArray() {
         String[] stringArray = new String[4];
-        stringArray[0] = this.getPrenda();
-        stringArray[1] = this.getColor();
-        stringArray[2] = this.getMedida();
-        stringArray[3] = this.getMarca();
+        stringArray[0] = prenda;
+        stringArray[1] = color;
+        stringArray[2] = medida;
+        stringArray[3] = marca;
         
         return stringArray;
     }

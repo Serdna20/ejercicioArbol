@@ -30,7 +30,7 @@ public class ArbolBinario {
     }
 
     public void recorrerInOrden() {
-        ArrayList<String> arrPrint = new ArrayList();
+        ArrayList<String> arrPrint = new ArrayList<>();
         recorrerInOrdenRecursivo(raiz, arrPrint);
         
         String output = "";
@@ -56,33 +56,38 @@ public class ArbolBinario {
     }
     
     public void buscarInOrden(String findThis) {
-        ArrayList<String> arrPrint = new ArrayList();
-        buscarInOrdenRecursivo(raiz, arrPrint, findThis);
+        ArrayList<String> arrPrintFind = new ArrayList<>();
+        arrPrintFind.clear();
+        buscarInOrdenRecursivo(raiz, arrPrintFind, findThis);
         
         String output = "";
         
-        for (String string : arrPrint) {
+        for (String string : arrPrintFind) {
             output += string + "\n";
+        }
+        
+        if (output.equals("")) {
+            output = "No encontramos nada :(";
         }
         
         JOptionPane.showMessageDialog(null, output);
     }
     
-    private void buscarInOrdenRecursivo(Nodo nodo, ArrayList<String> arrPrint, String findThis) {
+    private void buscarInOrdenRecursivo(Nodo nodo, ArrayList<String> arrPrintFind, String findThis) {
         
         if (nodo != null) {
-            recorrerInOrdenRecursivo(nodo.izq, arrPrint);
+            buscarInOrdenRecursivo(nodo.izq, arrPrintFind, findThis);
             
             String[] infoArray = nodo.getProducto().getArray();
             
             for (String string : infoArray) {
-                if (string.equals(findThis)) {
-                    arrPrint.add(nodo.getProducto().toString());
+                if (findThis.equals(string)) {
+                    arrPrintFind.add(nodo.getProducto().toString());
                     break;
                 }
             }
             
-            recorrerInOrdenRecursivo(nodo.der, arrPrint);
+            buscarInOrdenRecursivo(nodo.der, arrPrintFind, findThis);
         }
     }
     
